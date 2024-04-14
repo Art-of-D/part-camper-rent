@@ -1,0 +1,4 @@
+.CommonLayout {
+  display: flex;
+  flex-direction: column;
+}
