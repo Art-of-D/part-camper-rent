@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export const SVGRender = ({ svgString }) => {
+export const SVGRender = ({ className, svgString }) => {
   const svgRef = useRef(null);
 
   useEffect(() => {
@@ -9,5 +9,5 @@ export const SVGRender = ({ svgString }) => {
     }
   }, [svgString]);
 
-  return <svg ref={svgRef} />;
+  return <div className={className} ref={svgRef}></div>;
 };

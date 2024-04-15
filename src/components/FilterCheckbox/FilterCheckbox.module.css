@@ -1,0 +1,44 @@
+.vehicleEquipmentDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 61px;
+  padding: 17px 40px;
+  border-radius: 10px;
+  border: 1px solid var(--elements-background-color);
+}
+
+.vehicleEquipmentLabel::first-letter {
+  text-transform: uppercase;
+}
+
+.vehicleEquipmentSVG {
+  width: 32px;
+  height: 32px;
+}
+
+.vehicleTypeDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 61px;
+  padding: 17px 40px;
+  border-radius: 10px;
+  border: 1px solid var(--elements-background-color);
+}
+
+.vehicleTypeLabel {
+  text-align: center;
+}
+.vehicleTypeLabel::first-letter {
+  text-transform: uppercase;
+}
+
+.vehicleTypeSVG {
+  width: 32px;
+  height: 32px;
+}
