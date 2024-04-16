@@ -1,7 +1,38 @@
+.header3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--accent-frst-color);
+  margin: 0;
+}
+
+.header3:first-child {
+  color: var(--text-accent-rdba);
+}
+
+.header2 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  margin-top: 14px;
+}
+
+.header2::after {
+  content: '';
+  display: block;
+  width: 360px;
+  height: 1px;
+  background-color: var(--scnd-elements-accent-rgba);
+  margin: 24px 0;
+}
+
 .filterInnerWrapper {
   display: flex;
   width: 362px;
-  height: 200px;
+  height: 100%;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 0;
+  margin-bottom: 32px;
 }

@@ -2,3 +2,25 @@
   display: flex;
   flex-direction: column;
 }
+
+.CommonLayoutNav {
+  display: flex;
+  column-gap: 10px;
+}
+
+.CommonLayoutLink {
+  width: 53px;
+  height: 100%;
+  display: inline-flex;
+  padding: 16px 60px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  background-color: var(--main-accent-color);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.0003125em;
+  color: var(--white-color);
+}

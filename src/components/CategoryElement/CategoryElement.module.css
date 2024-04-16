@@ -7,7 +7,7 @@
   height: 61px;
   padding: 17px 40px;
   border-radius: 10px;
-  border: 1px solid var(--elements-background-color);
+  border: 1px solid var(--elements-accent-rgba);
 }
 
 .vehicleEquipmentLabel::first-letter {
@@ -28,7 +28,7 @@
   height: 61px;
   padding: 17px 40px;
   border-radius: 10px;
-  border: 1px solid var(--elements-background-color);
+  border: 1px solid var(--elements-accent-rgba);
 }
 
 .vehicleTypeLabel {

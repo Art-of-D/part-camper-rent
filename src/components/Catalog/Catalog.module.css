@@ -1,0 +1,12 @@
+.textNone {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.catalogList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}

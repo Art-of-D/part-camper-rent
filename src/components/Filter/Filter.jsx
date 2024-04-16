@@ -1,22 +1,31 @@
 import { FilterInput } from '../FilterInput/FilterInput';
-import { FilterCheckbox } from '../FilterCheckbox/FilterCheckbox';
-import { vehicleEquipment } from '../../data/vehicle-equipment-v1';
-import { vehicleType } from '../../data/vehicle-type-v1';
+import { CategoryElement } from '../CategoryElement/CategoryElement';
+import { svgIcons } from '../../data/svgIcons';
 import { v4 as uuidv4 } from 'uuid';
 import style from './Filter.module.css';
+
 export const Filter = () => {
+  const vehicleEquipment = [
+    'airCooler',
+    'transmission',
+    'kitchen',
+    'TV',
+    'bathroom',
+  ];
+
+  const vehicleType = ['van', 'integrated', 'aclove'];
   return (
     <>
       <form>
-        <p>Location</p>
+        <h3 className={style.header3}>Location</h3>
         <FilterInput />
-        <p>Filters</p>
-        <h2>Vehicle equipment</h2>
+        <h3 className={style.header3}>Filters</h3>
+        <h2 className={style.header2}>Vehicle equipment</h2>
         <div className={style.filterInnerWrapper}>
-          {Object.keys(vehicleEquipment).map(key => {
-            const { svgIcon, name } = vehicleEquipment[key];
+          {vehicleEquipment.map(key => {
+            const { svgIcon, name } = svgIcons[key];
             return (
-              <FilterCheckbox
+              <CategoryElement
                 key={uuidv4()}
                 type="vehicleEquipment"
                 name={name}
@@ -25,12 +34,12 @@ export const Filter = () => {
             );
           })}
         </div>
-        <h2>Vehicle type</h2>
+        <h2 className={style.header2}>Vehicle type</h2>
         <div className={style.filterInnerWrapper}>
-          {Object.keys(vehicleType).map(key => {
-            const { svgIcon, name } = vehicleType[key];
+          {vehicleType.map(key => {
+            const { svgIcon, name } = svgIcons[key];
             return (
-              <FilterCheckbox
+              <CategoryElement
                 key={uuidv4()}
                 type="vehicleType"
                 name={name}
