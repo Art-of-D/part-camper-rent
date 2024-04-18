@@ -1,16 +1,16 @@
-.CommonLayout {
+.CatalogLayout {
   display: flex;
   flex-direction: column;
   width: 360px;
   height: 100%;
 }
 
-.CommonLayoutNav {
+.CatalogLayoutNav {
   display: flex;
   column-gap: 10px;
 }
 
-.CommonLayoutLink {
+.CatalogLayoutLink {
   width: 53px;
   height: 100%;
   display: inline-flex;

@@ -1,12 +1,12 @@
 .detailsDiv {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  width: 90px;
+  width: auto;
   height: 20px;
   padding: 12px 18px;
-  border-radius: 10px;
+  border-radius: 100px;
+  background-color: var(--elements-background-color);
+  gap: 8px;
 }
 
 .detailsLabel {
@@ -17,7 +17,13 @@
   color: var(--main-black-color);
 }
 
+.detailsLabel::first-letter {
+  text-transform: uppercase;
+}
+
 .detailsSVG {
   width: 20px;
   height: 20px;
+  display: flex;
+  align-items: center;
 }

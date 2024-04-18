@@ -1,27 +1,22 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, useEffect, useState } from 'react';
-import { CommonLayout } from './components/Layout/CommonLayout';
-import { Catalog } from './components/Catalog/Catalog';
-import { fetchAllData } from './mockapi/camperAPI';
+import { lazy } from 'react';
+import { CatalogLayout } from './components/Layout/CatalogLayout';
 import style from './App.module.css';
+import Favorites from './pages/Favorites/Favorites';
+import Home from './pages/Home/Home';
+
+const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 
 function App() {
-  const [catalog, setCatalog] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetchAllData();
-      console.log(response);
-      setCatalog(response);
-    })();
-  }, []);
-
   return (
     <div className={style.commonWrapper}>
       <Routes>
-        <Route path="/" element={<CommonLayout />}>
-          <Route index element={<Catalog catalog={catalog} />} />
+        <Route index element={<Home />} />
+        <Route path="/" element={<CatalogLayout />}>
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Route>
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );

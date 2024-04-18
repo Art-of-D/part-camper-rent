@@ -5,6 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 import style from './Filter.module.css';
 
 export const Filter = () => {
+  const type = {
+    vehicleEquipment: 'vehicleEquipment',
+    vehicleType: 'vehicleType',
+  };
   const vehicleEquipment = [
     'airCooler',
     'transmission',
@@ -27,7 +31,7 @@ export const Filter = () => {
             return (
               <CategoryElement
                 key={uuidv4()}
-                type="vehicleEquipment"
+                type={type.vehicleEquipment}
                 name={name}
                 svgIcon={svgIcon}
               />
@@ -41,7 +45,7 @@ export const Filter = () => {
             return (
               <CategoryElement
                 key={uuidv4()}
-                type="vehicleType"
+                type={type.vehicleType}
                 name={name}
                 svgIcon={svgIcon}
               />

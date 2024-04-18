@@ -1,0 +1,31 @@
+.textNone {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.catalogWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.catalogList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.loadMoreButton {
+  margin-top: 50px;
+  width: 145px;
+  height: 56px;
+  border-radius: 200px;
+  padding: 16px 32px;
+  border: 1px solid var(--elements-accent-rgba);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.0003125em;
+}

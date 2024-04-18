@@ -1,18 +1,18 @@
-import styled from './CommonLayout.module.css';
+import styled from './CatalogLayout.module.css';
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Filter } from '../Filter/Filter';
 
-export const CommonLayout = () => {
+export const CatalogLayout = () => {
   return (
     <>
-      <header className={styled.CommonLayout}>
+      <header className={styled.CatalogLayout}>
         <Filter />
-        <nav className={styled.CommonLayoutNav}>
-          <NavLink className={styled.CommonLayoutLink} to="/" end>
+        <nav className={styled.CatalogLayoutNav}>
+          <NavLink className={styled.CatalogLayoutLink} to="/" end>
             Search
           </NavLink>
-          <NavLink className={styled.CommonLayoutLink} to="/favorites">
+          <NavLink className={styled.CatalogLayoutLink} to="/favorites">
             Favorites
           </NavLink>
         </nav>
