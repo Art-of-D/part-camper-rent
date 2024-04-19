@@ -1,21 +1,48 @@
-import {style}
-export const CamperHeader = () => {
-  return (
-    <>
-      <div className={style.firstLineWrapper}>
-        <h2 className={style.header2}>{name}</h2>
-        <div className={style.firstLineInnerWrapper}>
-          <h2 className={style.header2}>{`€${price},00`}</h2>
-          <div onClick={handleFavoriteClick}>
-            <SVGRender
-              className={`${favorite ? style.favoriteIconActive : ''} ${
-                style.favoriteIcon
-              }`}
-              svgString={svgIcons.favorite.svgIcon}
-            />
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+.firstLineWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.header2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.firstLineInnerWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.favoriteIcon {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  fill: transparent;
+  stroke: var(--main-black-color);
+  cursor: pointer;
+}
+
+.favoriteIconActive {
+  fill: var(--main-accent-color);
+  stroke: transparent;
+  cursor: pointer;
+}
+
+.secondLineWrapper {
+  display: flex;
+  align-items: center;
+}
+.starIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: 16px;
+  margin-right: 4px;
+}

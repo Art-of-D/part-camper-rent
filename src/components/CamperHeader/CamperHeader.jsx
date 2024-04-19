@@ -8,10 +8,19 @@ import {
 import { getFavorites } from '../../redux-store/favorites/selectors';
 import { getCatalog } from '../../redux-store/catalog/selectors';
 import { findCamper } from '../../utils/findCamper';
+import { svgIcons } from '../../data/svgIcons';
 
-export const CamperHeader = ({ price, name, favorite }) => {
+export const CamperHeader = ({
+  price,
+  name,
+  favorite,
+  rating,
+  reviews,
+  location,
+}) => {
   const favoriteCatalog = useSelector(getFavorites);
   const catalog = useSelector(getCatalog);
+  const CAMPER_ID = 'data-camperid';
   const dispatch = useDispatch();
 
   const handleFavoriteClick = event => {
@@ -48,6 +57,20 @@ export const CamperHeader = ({ price, name, favorite }) => {
             />
           </div>
         </div>
+      </div>
+      <div className={style.secondLineWrapper}>
+        <SVGRender
+          className={style.starIcon}
+          svgString={svgIcons.star.svgIcon}
+        />
+        <p
+          className={style.textReviews}
+        >{`${rating}(${reviews.length} Reviews)`}</p>
+        <SVGRender
+          className={style.locationIcon}
+          svgString={svgIcons.location.svgIcon}
+        />
+        <p className={style.textLocation}>{location}</p>
       </div>
     </>
   );

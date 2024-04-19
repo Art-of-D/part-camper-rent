@@ -5,13 +5,15 @@
 
   --main-black-color: #101828;
   --main-accent-color: #e44848;
+  --main-accent-dark-color: #d84343;
   --accent-frst-color: #475467;
   --accent-scnd-color: #ffc531;
   --elements-background-color: #f2f4f7;
   --scnd-elements-background-color: #f7f7f7;
   --elements-accent-rgba: rgba(16, 24, 40, 0.2);
   --scnd-elements-accent-rgba: rgba(16, 24, 40, 0.1);
-  --text-accent-rdba: rgba(16, 24, 40, 0.6);
+  --text-accent-rgba: rgba(16, 24, 40, 0.6);
+  --background-overlay-rgba: rgba(17, 18, 19, 0.4);
   --white-color: #fff;
 
   font-synthesis: none;

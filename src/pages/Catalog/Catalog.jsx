@@ -10,7 +10,6 @@ import {
   getIsLoading,
   getError,
 } from '../../redux-store/catalog/selectors';
-import { findCamper } from '../../utils/findCamper';
 import {
   getFavorites,
   getIsLoadingFavorites,
@@ -19,9 +18,6 @@ import {
 
 const Catalog = () => {
   const [visibleCampers, setVisibleCampers] = useState(4);
-  const [isOpen, setIsOpen] = useState(false);
-  const openPopup = () => setIsOpen(true);
-  const closePopup = () => setIsOpen(false);
 
   const catalog = useSelector(getCatalog);
   const load = useSelector(getIsLoading);
@@ -54,9 +50,7 @@ const Catalog = () => {
             {catalog.slice(0, visibleCampers).map(camper => {
               const favorite = favoriteCatalog.some(
                 favoriteCamper => favoriteCamper?._id === camper._id
-              )
-                ? true
-                : false;
+              );
               return (
                 <CatalogElement
                   key={uuidv4()}
@@ -67,9 +61,11 @@ const Catalog = () => {
             })}
           </ul>
           {visibleCampers < catalog.length && (
-            <button onClick={handleLoadMore} className={style.loadMoreButton}>
-              Load more
-            </button>
+            <div className={style.loadMoreWrapper}>
+              <button onClick={handleLoadMore} className={style.loadMoreButton}>
+                Load more
+              </button>
+            </div>
           )}
         </div>
       )}

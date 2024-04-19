@@ -1,0 +1,25 @@
+.header2 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.secondLineWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 10px;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+.locationIcon {
+  width: 16px;
+  height: 16px;
+  margin-left: 16px;
+  margin-right: 4px;
+}

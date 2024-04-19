@@ -26,3 +26,7 @@
   letter-spacing: -0.0003125em;
   color: var(--white-color);
 }
+
+.CatalogLayoutLink:hover {
+  background-color: var(--main-accent-dark-color);
+}

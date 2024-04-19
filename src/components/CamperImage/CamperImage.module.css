@@ -1,9 +1,7 @@
-import style from './CamperImage.module.css';
-
-export const CamperImage = () => {
-  return (
-    <>
-      <img className={style.camperImg} src={imgSrc} alt={name} />
-    </>
-  );
-};
+.camperImg {
+  width: 290px;
+  height: 310px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 24px;
+}
