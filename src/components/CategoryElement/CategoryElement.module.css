@@ -8,6 +8,8 @@
   padding: 17px 40px;
   border-radius: 10px;
   border: 1px solid var(--elements-accent-rgba);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .vehicleEquipmentLabel::first-letter {
@@ -29,6 +31,8 @@
   padding: 17px 40px;
   border-radius: 10px;
   border: 1px solid var(--elements-accent-rgba);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
 .vehicleTypeLabel {
@@ -41,4 +45,8 @@
 .vehicleTypeSVG {
   width: 32px;
   height: 32px;
+}
+
+.checkedInput {
+  border-color: var(--main-accent-color);
 }

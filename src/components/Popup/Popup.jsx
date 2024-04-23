@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { PopupFeatures } from './PopupFeatures/PopupFeatures';
 import { PopupReviews } from './PopupReviews/PopupReviews';
 import { useState } from 'react';
+import { PopupBooking } from './PopupBooking/PopupBooking';
 
 export const Popup = ({
   closePopup,
@@ -87,22 +88,25 @@ export const Popup = ({
               </h3>
             </li>
           </ul>
-          {activeSection === 'features' && (
-            <PopupFeatures
-              details={details}
-              form={form}
-              length={length}
-              width={width}
-              height={height}
-              tank={tank}
-              consumption={consumption}
-              adults={adults}
-              beds={beds}
-              childrenPlace={children}
-              hob={hob}
-            />
-          )}
-          {activeSection === 'reviews' && <PopupReviews />}
+          <div className={style.popupBottom}>
+            {activeSection === 'features' && (
+              <PopupFeatures
+                details={details}
+                form={form}
+                length={length}
+                width={width}
+                height={height}
+                tank={tank}
+                consumption={consumption}
+                adults={adults}
+                beds={beds}
+                childrenPlace={children}
+                hob={hob}
+              />
+            )}
+            {activeSection === 'reviews' && <PopupReviews reviews={reviews} />}
+            <PopupBooking />
+          </div>
         </div>
       </div>
     </div>

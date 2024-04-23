@@ -3,7 +3,11 @@ import { CatalogElement } from '../../components/CatalogElement/CatalogElement';
 import style from './Catalog.module.css';
 import { useState, useEffect } from 'react';
 import { getCatalogThunk } from '../../redux-store/catalog/thunks';
-import { getFavoritesThunk } from '../../redux-store/favorites/thunks';
+import {
+  getFavoritesThunk,
+  addFavoriteThunk,
+  deleteFavoriteThunk,
+} from '../../redux-store/favorites/thunks';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   getCatalog,
@@ -15,6 +19,7 @@ import {
   getIsLoadingFavorites,
   getFavoritesError,
 } from '../../redux-store/favorites/selectors';
+import { findCamper } from '../../utils/findCamper';
 
 const Catalog = () => {
   const [visibleCampers, setVisibleCampers] = useState(4);
@@ -31,11 +36,23 @@ const Catalog = () => {
 
   useEffect(() => {
     dispatch(getCatalogThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(getFavoritesThunk());
   }, [dispatch]);
 
   const handleLoadMore = () => {
     setVisibleCampers(prev => prev + 4);
+  };
+
+  const handleAddFavorite = camperId => {
+    const camper = findCamper(catalog, camperId);
+    dispatch(addFavoriteThunk(camper));
+  };
+
+  const handleDeleteFavorite = camperId => {
+    dispatch(deleteFavoriteThunk(camperId));
   };
 
   return (
@@ -56,6 +73,8 @@ const Catalog = () => {
                   key={uuidv4()}
                   camper={camper}
                   favorite={favorite}
+                  handleAddFavorite={handleAddFavorite}
+                  handleDeleteFavorite={handleDeleteFavorite}
                 />
               );
             })}

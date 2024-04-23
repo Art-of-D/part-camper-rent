@@ -96,9 +96,6 @@
   border-bottom: 5px solid var(--main-accent-color);
 }
 
-.featuresReviews {
-}
-
 .camperButton {
   width: 166px;
   height: 56px;
@@ -115,4 +112,9 @@
   line-height: 1.5;
   letter-spacing: -0.0003125em;
   color: var(--white-color);
+}
+
+.popupBottom {
+  display: flex;
+  gap: 24px;
 }

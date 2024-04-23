@@ -1,7 +1,14 @@
-import { SVGRender } from '../../SVGRender/SVGRender';
 import style from './PopupReviews.module.css';
-import { svgIcons } from '../../../data/svgIcons';
+import { PopupReview } from './PopupReview/PopupReview';
 
-export const PopupReviews = ({ rating, reviews }) => {
-  return <>Reviews</>;
+export const PopupReviews = ({ reviews }) => {
+  return (
+    <>
+      <ul className={style.reviewsList}>
+        {reviews.map(review => {
+          return <PopupReview singleReview={review} />;
+        })}
+      </ul>
+    </>
+  );
 };

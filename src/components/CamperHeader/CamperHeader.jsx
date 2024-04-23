@@ -1,16 +1,12 @@
 import { SVGRender } from '../SVGRender/SVGRender';
 import style from './CamperHeader.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  addFavoriteThunk,
-  deleteFavoriteThunk,
-} from '../../redux-store/favorites/thunks';
-import { getFavorites } from '../../redux-store/favorites/selectors';
-import { getCatalog } from '../../redux-store/catalog/selectors';
-import { findCamper } from '../../utils/findCamper';
 import { svgIcons } from '../../data/svgIcons';
+import { useState } from 'react';
 
 export const CamperHeader = ({
+  handleAddFavorite,
+  handleDeleteFavorite,
+  camperId,
   price,
   name,
   favorite,
@@ -18,28 +14,15 @@ export const CamperHeader = ({
   reviews,
   location,
 }) => {
-  const favoriteCatalog = useSelector(getFavorites);
-  const catalog = useSelector(getCatalog);
-  const CAMPER_ID = 'data-camperid';
-  const dispatch = useDispatch();
+  const [isFavorite, setIsFavorite] = useState(favorite);
 
-  const handleFavoriteClick = event => {
-    if (!event.target) {
-      return;
-    }
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
 
-    const clickedElement = event.target.closest(`.${style.favoriteIcon}`);
-
-    if (!clickedElement) return;
-
-    const camperId = event.target
-      .closest(`.${style.listElement}`)
-      .getAttribute(CAMPER_ID);
-    const camperToDelete = findCamper(favoriteCatalog, camperId);
-    if (camperToDelete === undefined) {
-      dispatch(addFavoriteThunk(findCamper(catalog, camperId)));
+    if (!isFavorite) {
+      handleAddFavorite(camperId);
     } else {
-      dispatch(deleteFavoriteThunk(camperToDelete._id));
+      handleDeleteFavorite(camperId);
     }
   };
   return (

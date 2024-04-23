@@ -13,7 +13,6 @@ export const fetchAllFavorites = async () => {
 };
 
 export const deleteFavoriteCamper = async id => {
-  console.log('id', id);
   const resp = await axios.delete(`favorite/${id}`);
   return resp;
 };

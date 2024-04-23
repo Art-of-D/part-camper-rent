@@ -50,6 +50,7 @@
   letter-spacing: -0.0003125em;
   color: var(--white-color);
   cursor: pointer;
+  transition: background-color 250ms var(--transition-default);
 }
 
 .camperButton:hover {

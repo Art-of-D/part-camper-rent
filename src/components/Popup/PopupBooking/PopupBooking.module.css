@@ -1,0 +1,113 @@
+.bookingForm {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-accent-rgba);
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 400px;
+  padding: 24px;
+  border-radius: 10px;
+  border: 1px solid var(--elements-accent-rgba);
+}
+
+.bookingHeader3 {
+  color: var(--main-black-color);
+}
+.bookingText {
+  color: var(--accent-frst-color);
+}
+
+.bookingName,
+.bookingEmail,
+.bookingCalendar {
+  padding: 18px;
+  border-radius: 10px;
+  width: 364px;
+  height: 20px;
+  border: 1px solid transparent;
+  background-color: var(--scnd-elements-background-color);
+  outline: transparent;
+  outline-offset: 2px;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bookingCalendarWrapper {
+  position: relative;
+}
+
+.bookingCalendarIcon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+}
+
+.bookingCalendar::-webkit-calendar-picker-indicator {
+  background-image: none;
+}
+
+.bookingComments {
+  resize: none;
+  padding: 18px;
+  border-radius: 10px;
+  width: 364px;
+  min-height: 88px;
+  border-color: transparent;
+  background-color: var(--scnd-elements-background-color);
+  outline: transparent;
+  outline-offset: 2px;
+  transition: border-color 250ms var(--transition-default);
+}
+.bookingName:focus,
+.bookingName:hover,
+.bookingCalendar:focus,
+.bookingCalendar:hover,
+.bookingEmail:focus,
+.bookingEmail:hover,
+.bookingComments:focus,
+.bookingComments:hover {
+  border-color: var(--main-accent-color);
+}
+.bookingCalendar:focus {
+  border-color: var(--main-accent-color);
+}
+
+.bookingComments {
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.bookingButton {
+  width: 166px;
+  height: 56px;
+  display: inline-flex;
+  padding: 16px 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  background-color: var(--main-accent-color);
+  border-color: transparent;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.0003125em;
+  color: var(--white-color);
+  cursor: pointer;
+  transition: background-color 250ms var(--transition-default);
+}
+
+.bookingButton:hover {
+  background-color: var(--main-accent-dark-color);
+}
+
+.bookingCalendarTabel {
+  position: absolute !important;
+  top: -50px;
+  right: 0;
+}

@@ -8,7 +8,12 @@ import { Popup } from '../Popup/Popup';
 import { CamperHeader } from '../CamperHeader/CamperHeader';
 import { CamperImage } from '../CamperImage/CamperImage';
 
-export const CatalogElement = ({ favorite, camper }) => {
+export const CatalogElement = ({
+  handleAddFavorite,
+  handleDeleteFavorite,
+  favorite,
+  camper,
+}) => {
   const {
     _id,
     adults,
@@ -33,7 +38,6 @@ export const CatalogElement = ({ favorite, camper }) => {
   const closePopup = () => setIsOpen(false);
 
   const handleClick = () => {
-    console.log('open');
     openPopup();
   };
 
@@ -43,16 +47,19 @@ export const CatalogElement = ({ favorite, camper }) => {
 
   return (
     <>
-      <li className={style.listElement} data-camperid={_id}>
+      <li className={style.listElement}>
         <CamperImage img={gallery[0]} alt={name} />
         <div className={style.camperInfoWrapper}>
           <CamperHeader
+            camperId={_id}
             name={name}
             price={price}
             location={location}
             favorite={favorite}
             rating={rating}
             reviews={reviews}
+            handleAddFavorite={handleAddFavorite}
+            handleDeleteFavorite={handleDeleteFavorite}
           />
           <p className={style.textDescription}>{description}</p>
           <ul className={style.detailsList}>
