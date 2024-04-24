@@ -1,5 +1,5 @@
 import { catalogReducer } from './catalog/catalogSlice';
-import { favoritesReducer } from './favorites/favoritesSlice';
+import favoritesReducer from './favorites/favoritesReducer';
 
 export const reducer = {
   catalog: catalogReducer,

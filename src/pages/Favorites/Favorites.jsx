@@ -1,55 +1,35 @@
 import { v4 as uuidv4 } from 'uuid';
 import { CatalogElement } from '../../components/CatalogElement/CatalogElement';
 import style from './Favorites.module.css';
-import { useState, useEffect } from 'react';
-import { getFavoritesThunk } from '../../redux-store/favorites/thunks';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  getFavorites,
-  getIsLoadingFavorites,
-  getFavoritesError,
-} from '../../redux-store/favorites/selectors';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getFavorites } from '../../redux-store/favorites/selectors';
 
 const Favorites = () => {
-  const [visibleCampers, setVisibleCampers] = useState(4);
-  const favoriteCatalog = useSelector(getFavorites);
-  const load = useSelector(getIsLoadingFavorites);
-  const error = useSelector(getFavoritesError);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getFavoritesThunk());
-  }, [dispatch]);
-
+  const TO_SHOW = 4;
+  const [visibleCampers, setVisibleCampers] = useState(TO_SHOW);
   const handleLoadMore = () => {
-    setVisibleCampers(prev => prev + 4);
+    setVisibleCampers(prev => prev + TO_SHOW);
   };
 
+  const favoriteCatalog = useSelector(getFavorites);
   return (
     <>
-      {favoriteCatalog.length === 0 && !load ? (
+      {favoriteCatalog.length === 0 && (
         <p className={style.textNone}>You don`t have any chosen campers</p>
-      ) : (
-        <div className={style.catalogWrapper}>
-          <ul className={style.catalogList}>
-            {favoriteCatalog.slice(0, visibleCampers).map(camper => {
-              return (
-                <CatalogElement
-                  key={uuidv4()}
-                  camper={camper}
-                  favorite={true}
-                />
-              );
-            })}
-          </ul>
-          {visibleCampers < favoriteCatalog.length && (
-            <button onClick={handleLoadMore} className={style.loadMoreButton}>
-              Load more
-            </button>
-          )}
-          {error && <p>{error}</p>}
-        </div>
       )}
+      <div className={style.catalogWrapper}>
+        <ul className={style.catalogList}>
+          {favoriteCatalog.slice(0, visibleCampers).map(camper => {
+            return <CatalogElement key={uuidv4()} camper={camper} />;
+          })}
+        </ul>
+        {visibleCampers < favoriteCatalog.length && (
+          <button onClick={handleLoadMore} className={style.loadMoreButton}>
+            Load more
+          </button>
+        )}
+      </div>
     </>
   );
 };

@@ -1,11 +1,7 @@
 import { SVGRender } from '../SVGRender/SVGRender';
 import style from './CamperDetails.module.css';
-import { useSelector } from 'react-redux';
-import { getCatalog } from '../../redux-store/catalog/selectors';
-import { findCamper } from '../../utils/findCamper';
 
-export const CamperDetails = ({ svgIcon, name, camperId }) => {
-  const catalog = useSelector(getCatalog);
+export const CamperDetails = ({ svgIcon, name, camper }) => {
   const specialDetails = [
     'beds',
     'hob',
@@ -17,7 +13,6 @@ export const CamperDetails = ({ svgIcon, name, camperId }) => {
 
   const getRightForm = () => {
     if (specialDetails.includes(name)) {
-      const camper = findCamper(catalog, camperId);
       if (camper) {
         if (special.includes(name)) {
           return `${camper[name]} ${name}`;

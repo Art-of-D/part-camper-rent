@@ -1,24 +1,25 @@
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import { CatalogLayout } from './components/Layout/CatalogLayout';
-import style from './App.module.css';
-import Favorites from './pages/Favorites/Favorites';
+import { CatalogLayout } from './components/Layout/CatalogLayout/CatalogLayout';
 import Home from './pages/Home/Home';
+import { CommonLayout } from './components/Layout/CommonLayout/CommonLayout';
 
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
-
+const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
 function App() {
   return (
-    <div className={style.commonWrapper}>
+    <>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/" element={<CatalogLayout />}>
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/favorites" element={<Favorites />} />
+        <Route path="/" element={<CommonLayout />}>
+          <Route index element={<Home />} />
+          <Route path={'/'} element={<CatalogLayout />}>
+            <Route path="/catalog" element={<Catalog />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Route>
         </Route>
         <Route path="*" element={<Home />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

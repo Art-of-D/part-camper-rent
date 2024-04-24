@@ -1,0 +1,14 @@
+.favoriteIcon {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  fill: transparent;
+  stroke: var(--main-black-color);
+  cursor: pointer;
+}
+
+.favoriteIconActive {
+  fill: var(--main-accent-color);
+  stroke: transparent;
+  cursor: pointer;
+}

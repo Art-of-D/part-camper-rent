@@ -1,16 +1,22 @@
-.CatalogLayout {
+.catalogWrapper {
+  display: flex;
+  gap: 64px;
+  padding: 100px 64px;
+}
+
+.catalogLayout {
   display: flex;
   flex-direction: column;
   width: 360px;
   height: 100%;
 }
 
-.CatalogLayoutNav {
+.catalogLayoutNav {
   display: flex;
   column-gap: 10px;
 }
 
-.CatalogLayoutLink {
+.catalogLayoutLink {
   width: 53px;
   height: 100%;
   display: inline-flex;
@@ -27,6 +33,6 @@
   color: var(--white-color);
 }
 
-.CatalogLayoutLink:hover {
+.catalogLayoutLink:hover {
   background-color: var(--main-accent-dark-color);
 }

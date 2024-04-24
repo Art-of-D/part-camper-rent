@@ -1,0 +1,69 @@
+.heroWrapper {
+  position: relative;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+}
+
+.heroPhraseWrapper {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+.heroPhraseWrapper {
+  position: absolute;
+  top: 40%;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.heroPhraseWrapper h1,
+.heroPhraseWrapper p {
+  color: var(--white-color);
+}
+
+.heroPhraseWrapper h1 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.heroPhraseWrapper p {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.heroCTAWrapper {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  cursor: pointer;
+}
+
+.heroCTASVG {
+  width: 100%;
+  height: 100%;
+  max-width: 150px;
+  max-height: 180px;
+}
+
+.heroCTA {
+  position: absolute;
+  top: 13%;
+  left: 13%;
+  width: 100px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--main-accent-color);
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

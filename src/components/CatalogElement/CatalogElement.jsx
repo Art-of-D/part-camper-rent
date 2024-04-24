@@ -8,20 +8,10 @@ import { Popup } from '../Popup/Popup';
 import { CamperHeader } from '../CamperHeader/CamperHeader';
 import { CamperImage } from '../CamperImage/CamperImage';
 
-export const CatalogElement = ({
-  handleAddFavorite,
-  handleDeleteFavorite,
-  favorite,
-  camper,
-}) => {
+export const CatalogElement = ({ camper }) => {
   const {
-    _id,
     adults,
     name,
-    price,
-    rating,
-    reviews,
-    location,
     description,
     transmission,
     engine,
@@ -30,6 +20,7 @@ export const CatalogElement = ({
     details: { airCooler },
     gallery,
   } = camper;
+
   const [isOpen, setIsOpen] = useState(false);
 
   const details = { adults, transmission, engine, kitchen, beds, airCooler };
@@ -50,17 +41,7 @@ export const CatalogElement = ({
       <li className={style.listElement}>
         <CamperImage img={gallery[0]} alt={name} />
         <div className={style.camperInfoWrapper}>
-          <CamperHeader
-            camperId={_id}
-            name={name}
-            price={price}
-            location={location}
-            favorite={favorite}
-            rating={rating}
-            reviews={reviews}
-            handleAddFavorite={handleAddFavorite}
-            handleDeleteFavorite={handleDeleteFavorite}
-          />
+          <CamperHeader camper={camper} />
           <p className={style.textDescription}>{description}</p>
           <ul className={style.detailsList}>
             {Object.keys(details).map(key => {
@@ -70,7 +51,7 @@ export const CatalogElement = ({
                   key={uuidv4()}
                   name={name}
                   svgIcon={svgIcon}
-                  camperId={_id}
+                  camper={camper}
                 />
               );
             })}
