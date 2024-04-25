@@ -6,6 +6,7 @@ import { CommonLayout } from './components/Layout/CommonLayout/CommonLayout';
 
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
 const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
+
 function App() {
   return (
     <>
@@ -16,8 +17,8 @@ function App() {
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/favorites" element={<Favorites />} />
           </Route>
+          <Route path="*" element={<Home />} />
         </Route>
-        <Route path="*" element={<Home />} />
       </Routes>
     </>
   );

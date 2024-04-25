@@ -1,30 +1,54 @@
 import { v4 as uuidv4 } from 'uuid';
 import { CatalogElement } from '../../components/CatalogElement/CatalogElement';
 import style from './Favorites.module.css';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFavorites } from '../../redux-store/favorites/selectors';
+import {
+  getAllFilters,
+  getStartFiltering,
+} from '../../redux-store/filter/selectors';
+import { filteredList } from '../../utils/filteredList';
+import {
+  setLocation,
+  startFiltering,
+} from '../../redux-store/filter/filterReducer';
 
 const Favorites = () => {
   const TO_SHOW = 4;
   const [visibleCampers, setVisibleCampers] = useState(TO_SHOW);
+  const [filteredCatalog, setFilteredCatalog] = useState([]);
+  const startSearch = useSelector(getStartFiltering);
+  const filters = useSelector(getAllFilters);
+  const favoriteCatalog = useSelector(getFavorites);
+  const dispatch = useDispatch();
+
   const handleLoadMore = () => {
     setVisibleCampers(prev => prev + TO_SHOW);
   };
 
-  const favoriteCatalog = useSelector(getFavorites);
+  useEffect(() => {
+    if (startSearch) {
+      setFilteredCatalog(filteredList(favoriteCatalog, filters));
+      return () => {
+        dispatch(startFiltering(false));
+        dispatch(setLocation(''));
+      };
+    }
+    setFilteredCatalog(favoriteCatalog);
+  }, [startSearch, favoriteCatalog, filters, dispatch]);
   return (
     <>
-      {favoriteCatalog.length === 0 && (
-        <p className={style.textNone}>You don`t have any chosen campers</p>
-      )}
       <div className={style.catalogWrapper}>
+        {filteredCatalog.length === 0 && (
+          <p className={style.textNone}>You don`t have any chosen campers</p>
+        )}
         <ul className={style.catalogList}>
-          {favoriteCatalog.slice(0, visibleCampers).map(camper => {
+          {filteredCatalog.slice(0, visibleCampers).map(camper => {
             return <CatalogElement key={uuidv4()} camper={camper} />;
           })}
         </ul>
-        {visibleCampers < favoriteCatalog.length && (
+        {visibleCampers < filteredCatalog.length && (
           <button onClick={handleLoadMore} className={style.loadMoreButton}>
             Load more
           </button>

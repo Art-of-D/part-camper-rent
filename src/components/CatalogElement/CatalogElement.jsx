@@ -17,13 +17,13 @@ export const CatalogElement = ({ camper }) => {
     engine,
     kitchen,
     beds,
-    details: { airCooler },
+    details: { AC },
     gallery,
   } = camper;
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const details = { adults, transmission, engine, kitchen, beds, airCooler };
+  const details = { adults, transmission, engine, kitchen, beds, AC };
 
   const openPopup = () => setIsOpen(true);
   const closePopup = () => setIsOpen(false);

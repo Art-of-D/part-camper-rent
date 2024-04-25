@@ -63,6 +63,7 @@
   outline-offset: 2px;
   transition: border-color 250ms var(--transition-default);
 }
+
 .bookingName:focus,
 .bookingName:hover,
 .bookingCalendar:focus,
@@ -71,9 +72,6 @@
 .bookingEmail:hover,
 .bookingComments:focus,
 .bookingComments:hover {
-  border-color: var(--main-accent-color);
-}
-.bookingCalendar:focus {
   border-color: var(--main-accent-color);
 }
 

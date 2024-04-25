@@ -1,6 +1,7 @@
 import style from './CommonLayout.module.css';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import routeSVG from '/route.svg';
 
 export const CommonLayout = () => {
   return (
@@ -12,7 +13,7 @@ export const CommonLayout = () => {
             <span className={style.brandSpan}>
               <img
                 className={style.brandSVG}
-                src="/route.svg"
+                src={routeSVG}
                 alt="route brand"
               />
             </span>
