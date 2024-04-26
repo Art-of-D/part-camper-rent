@@ -11,6 +11,7 @@ export const PopupBooking = () => {
   const [endDate, setEndDate] = useState(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const dateInputRef = useRef(null);
+  const MAX_DATE = 5;
 
   const onChange = dates => {
     const [start, end] = dates;
@@ -18,16 +19,20 @@ export const PopupBooking = () => {
     setEndDate(end);
     if (start && end) {
       dateInputRef.current.value = `${start.toLocaleDateString()} - ${end.toLocaleDateString()}`;
-      setShowCalendar(false);
     } else if (start) {
       dateInputRef.current.value = start.toLocaleDateString();
     } else {
       dateInputRef.current.value = '';
     }
+    setShowCalendar(false);
   };
 
   const handleClick = () => {
     setShowCalendar(true);
+  };
+
+  const onClickOutside = () => {
+    setShowCalendar(false);
   };
 
   return (
@@ -53,10 +58,11 @@ export const PopupBooking = () => {
           <input
             type="text"
             placeholder="Booking date"
+            name="rentdate"
             ref={dateInputRef}
             onClick={handleClick}
             className={style.bookingCalendar}
-            readOnly
+            required
           ></input>
           <SVGRender
             className={style.bookingCalendarIcon}
@@ -69,9 +75,10 @@ export const PopupBooking = () => {
               selected={startDate}
               onChange={onChange}
               minDate={new Date()}
-              maxDate={new Date().getMonth + 5}
+              maxDate={new Date().getMonth + MAX_DATE}
               startDate={startDate}
               endDate={endDate}
+              onClickOutside={onClickOutside}
               selectsRange
               inline
               showDisabledMonthNavigation

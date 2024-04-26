@@ -18,7 +18,7 @@ const Home = () => {
       <Link to={'/catalog'} className={style.heroCTAWrapper}>
         <img className={style.heroCTASVG} src={balloonSVG} alt="ballon" />
         <div className={style.heroCTA}>
-          <p>Search</p>
+          <p>Rent a camper</p>
         </div>
       </Link>
     </div>

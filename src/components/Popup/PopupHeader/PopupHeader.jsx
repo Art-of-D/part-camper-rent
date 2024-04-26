@@ -2,14 +2,7 @@ import { SVGRender } from '../../SVGRender/SVGRender';
 import style from './PopupHeader.module.css';
 import { svgIcons } from '../../../data/svgIcons';
 
-export const PopupHeader = ({
-  price,
-  name,
-  favorite,
-  rating,
-  reviews,
-  location,
-}) => {
+export const PopupHeader = ({ price, name, rating, reviews, location }) => {
   return (
     <>
       <h2 className={style.header2}>{name}</h2>

@@ -59,7 +59,6 @@ const Catalog = () => {
     return <p>{error}</p>;
   }
 
-  console.log(filteredCatalog);
   return (
     <div className={style.catalogWrapper}>
       {filteredCatalog.length === 0 && (

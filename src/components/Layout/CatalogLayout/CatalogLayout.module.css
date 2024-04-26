@@ -2,6 +2,7 @@
   display: flex;
   gap: 64px;
   padding: 0 64px 100px 64px;
+  column-gap: 10px;
 }
 
 .catalogLayout {
@@ -11,9 +12,10 @@
   height: 100%;
 }
 
-.catalogLayoutWrapper {
+.catalogLayoutButtonsWrapper {
+  margin-top: 32px;
   display: flex;
-  column-gap: 10px;
+  justify-content: flex-start;
 }
 
 .catalogLayoutButton {

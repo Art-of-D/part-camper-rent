@@ -15,7 +15,7 @@ export const CatalogLayout = () => {
       <div className={style.catalogLayoutWrapper}>
         <div className={style.catalogLayout}>
           <Filter />
-          <div className={style.catalogLayoutWrapper}>
+          <div className={style.catalogLayoutButtonsWrapper}>
             <button className={style.catalogLayoutButton} onClick={handleClick}>
               Search
             </button>

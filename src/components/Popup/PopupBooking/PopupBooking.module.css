@@ -108,4 +108,11 @@
   position: absolute !important;
   top: -50px;
   right: 0;
+  border-radius: 12px !important;
+  width: 293px;
+  height: 241px;
+  padding: 16px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }

@@ -7,9 +7,8 @@ import { PopupReviews } from './PopupReviews/PopupReviews';
 import { useState } from 'react';
 import { PopupBooking } from './PopupBooking/PopupBooking';
 
-export const Popup = ({
-  closePopup,
-  camper: {
+export const Popup = ({ closePopup, camper }) => {
+  const {
     _id,
     name,
     price,
@@ -29,8 +28,7 @@ export const Popup = ({
     height,
     tank,
     consumption,
-  },
-}) => {
+  } = camper;
   const [activeSection, setActiveSection] = useState('features');
   const toggleSection = () => {
     setActiveSection(activeSection === 'features' ? 'reviews' : 'features');

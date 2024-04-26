@@ -1,3 +1,5 @@
+@import url('./css/calendar/calendar.css');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -68,6 +70,13 @@ button {
 
 address {
   font-style: normal;
+}
+
+.container {
+  display: flex;
+  width: 1440px;
+  justify-content: center;
+  margin: auto;
 }
 
 .visually-hidden {

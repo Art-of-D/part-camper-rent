@@ -6,7 +6,7 @@
 .commonLayout {
   min-width: 1440px;
   height: 100px;
-  padding: 0 50px;
+  padding: 0 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
