@@ -1,6 +1,6 @@
 import { CatalogElement } from '../../components/CatalogElement/CatalogElement';
 import style from './Catalog.module.css';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { getCatalogThunk } from '../../redux-store/catalog/thunks';
 import { useSelector, useDispatch } from 'react-redux';
 import {
