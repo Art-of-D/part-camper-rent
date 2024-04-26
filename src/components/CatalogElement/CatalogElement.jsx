@@ -3,7 +3,7 @@ import { svgIcons } from '../../data/svgIcons';
 import { v4 as uuidv4 } from 'uuid';
 import { CamperDetails } from '../CamperDetails/CamperDetails';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Popup } from '../Popup/Popup';
 import { CamperHeader } from '../CamperHeader/CamperHeader';
 import { CamperImage } from '../CamperImage/CamperImage';
@@ -36,6 +36,24 @@ export const CatalogElement = ({ camper }) => {
     closePopup();
   };
 
+  const handleClickOutside = () => {
+    closePopup();
+  };
+
+  useEffect(() => {
+    const handleEsc = event => {
+      if (event.key === 'Escape') {
+        closePopup();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEsc, false);
+    } else {
+      document.removeEventListener('keydown', handleEsc, false);
+    }
+  }, [isOpen, closePopup]);
+
   return (
     <>
       <li className={style.listElement}>
@@ -61,7 +79,13 @@ export const CatalogElement = ({ camper }) => {
           </button>
         </div>
       </li>
-      {isOpen && <Popup camper={camper} closePopup={handleClose} />}
+      {isOpen && (
+        <Popup
+          camper={camper}
+          closePopup={handleClose}
+          handleClickOutside={handleClickOutside}
+        />
+      )}
     </>
   );
 };

@@ -4,10 +4,10 @@ import { PopupHeader } from './PopupHeader/PopupHeader';
 import { v4 as uuidv4 } from 'uuid';
 import { PopupFeatures } from './PopupFeatures/PopupFeatures';
 import { PopupReviews } from './PopupReviews/PopupReviews';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PopupBooking } from './PopupBooking/PopupBooking';
 
-export const Popup = ({ closePopup, camper }) => {
+export const Popup = ({ closePopup, camper, handleClickOutside }) => {
   const {
     _id,
     name,
@@ -29,12 +29,28 @@ export const Popup = ({ closePopup, camper }) => {
     tank,
     consumption,
   } = camper;
+  const popupRef = useRef(null);
   const [activeSection, setActiveSection] = useState('features');
   const toggleSection = () => {
     setActiveSection(activeSection === 'features' ? 'reviews' : 'features');
   };
+
+  useEffect(() => {
+    const handleClick = event => {
+      if (popupRef.current === event.target) {
+        handleClickOutside();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+    };
+  }, [handleClickOutside, popupRef]);
+
   return (
-    <div className={style.popupOverlay}>
+    <div ref={popupRef} className={style.popupOverlay}>
       <div className={style.popupWrapper}>
         <div className={style.closeButton} onClick={closePopup}></div>
         <div className={style.camperInfoWrapper} data-camperid={_id}>

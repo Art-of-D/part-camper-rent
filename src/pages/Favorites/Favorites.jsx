@@ -28,6 +28,14 @@ const Favorites = () => {
   };
 
   useEffect(() => {
+    const favoritesFromStorage = localStorage.getItem('favorites');
+    if (favoritesFromStorage) {
+      const favorites = JSON.parse(favoritesFromStorage);
+      setFilteredCatalog(favorites);
+    }
+  }, [favoriteCatalog]);
+
+  useEffect(() => {
     if (startSearch) {
       setFilteredCatalog(filteredList(favoriteCatalog, filters));
       return () => {
@@ -35,8 +43,8 @@ const Favorites = () => {
         dispatch(setLocation(''));
       };
     }
-    setFilteredCatalog(favoriteCatalog);
-  }, [startSearch, favoriteCatalog, filters, dispatch]);
+  }, [startSearch, filters, dispatch, favoriteCatalog]);
+
   return (
     <>
       <div className={style.catalogWrapper}>

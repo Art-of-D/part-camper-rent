@@ -14,32 +14,32 @@ export const CamperFavorite = ({ camper }) => {
   const favoriteCatalog = useSelector(getFavorites);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const findFavorite = camper => {
-    const favoriteCamper = favoriteCatalog.find(
-      favoriteCamper => camper._id === favoriteCamper?._id
-    );
-    if (favoriteCamper !== undefined) {
-      const { _id } = favoriteCamper;
-      return _id;
-    } else {
-      return -1;
-    }
-  };
-
   useEffect(() => {
-    const result = findFavorite(camper);
-    if (result !== -1) {
-      setIsFavorite(true);
+    const favoritesFromStorage = localStorage.getItem('favorites');
+    if (favoritesFromStorage) {
+      const favorites = JSON.parse(favoritesFromStorage);
+      const isCamperFavorite = favorites.some(
+        favorite => favorite._id === camper._id
+      );
+      setIsFavorite(isCamperFavorite);
     }
-  }, [isFavorite]);
+  }, [camper._id]);
 
   const handleFavoriteClick = () => {
     if (!isFavorite) {
       dispatch(addToFavorites(camper));
       setIsFavorite(true);
+
+      const updatedFavorites = [...favoriteCatalog, camper];
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } else {
       dispatch(removeFromFavorites(camper._id));
       setIsFavorite(false);
+
+      const updatedFavorites = favoriteCatalog.filter(
+        favorite => favorite._id !== camper._id
+      );
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     }
   };
 

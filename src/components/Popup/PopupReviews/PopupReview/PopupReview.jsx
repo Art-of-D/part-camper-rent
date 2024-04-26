@@ -37,7 +37,7 @@ export const PopupReview = ({
   };
   return (
     <>
-      <li key={uuidv4()} className={style.review}>
+      <li className={style.review}>
         <div className={style.reviewInfoWrapper}>
           <div className={style.reviewerIcon}>
             <p className={style.reviewerFirstLetter}>{reviewerFirstLetter}</p>
