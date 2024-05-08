@@ -8,7 +8,7 @@ import {
   getAllFilters,
   getStartFiltering,
 } from '../../redux-store/filter/selectors';
-import { filteredList } from '../../utils/filteredList';
+import { filteredList } from '../../utils/filterUtils';
 import {
   setLocation,
   startFiltering,
