@@ -10,12 +10,18 @@
 .camperInfoWrapper {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+}
+.camperInfoWrapper > *:first-child {
+  margin-bottom: 8px;
+}
+
+.camperInfoWrapper > *:not(:first-child) {
+  margin-bottom: 24px;
 }
 
 .textDescription {
   width: 525px;
-  height: 24px;
+  min-height: 24px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

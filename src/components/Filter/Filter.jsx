@@ -9,9 +9,10 @@ import {
   removeFromFilter,
 } from '../../redux-store/filter/filterReducer';
 import { getFilters } from '../../redux-store/filter/selectors';
+import { isChecked } from '../../utils/filterUtils';
 
 export const Filter = () => {
-  const type = {
+  const filterTypes = {
     vehicleEquipment: 'vehicleEquipment',
     vehicleType: 'vehicleType',
   };
@@ -22,25 +23,37 @@ export const Filter = () => {
     'TV',
     'bathroom',
   ];
-  const vehicleTypeList = ['van', 'integrated', 'alcove'];
+  const vehicleTypeList = ['panelTruck', 'fullyIntegrated', 'alcove'];
 
   const dispatch = useDispatch();
 
-  const handleAddToFilter = item => {
+  const transformType = name => {
+    switch (name) {
+      case 'van':
+        return vehicleTypeList[0];
+      case 'fully integrated':
+        return vehicleTypeList[1];
+      default:
+        return vehicleTypeList[2];
+    }
+  };
+
+  const handleAddToFilter = ({ type, item }) => {
+    if (type === filterTypes.vehicleType) {
+      dispatch(addToFilter({ type, item: transformType(item) }));
+      return;
+    }
     dispatch(addToFilter({ type, item }));
   };
 
-  const handleRemoveFromFilter = item => {
+  const handleRemoveFromFilter = ({ type, item }) => {
+    if (type === filterTypes.vehicleType) {
+      dispatch(removeFromFilter({ type, item: transformType(item) }));
+      return;
+    }
     dispatch(removeFromFilter({ type, item }));
   };
   const { vehicleEquipment, vehicleType } = useSelector(getFilters);
-
-  const isChecked = (name, arr) => {
-    if (arr) {
-      return arr.some(item => item === name);
-    }
-    return false;
-  };
 
   return (
     <>
@@ -56,7 +69,7 @@ export const Filter = () => {
             return (
               <CategoryElement
                 key={uuidv4()}
-                type={type.vehicleEquipment}
+                type={filterTypes.vehicleEquipment}
                 name={name}
                 svgIcon={svgIcon}
                 checked={checked}
@@ -70,11 +83,11 @@ export const Filter = () => {
         <div className={style.filterInnerWrapper}>
           {vehicleTypeList.map(key => {
             const { svgIcon, name } = svgIcons[key];
-            const checked = isChecked(name, vehicleType);
+            const checked = isChecked(key, vehicleType);
             return (
               <CategoryElement
                 key={uuidv4()}
-                type={type.vehicleType}
+                type={filterTypes.vehicleType}
                 name={name}
                 svgIcon={svgIcon}
                 checked={checked}

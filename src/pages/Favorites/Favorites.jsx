@@ -28,11 +28,7 @@ const Favorites = () => {
   };
 
   useEffect(() => {
-    const favoritesFromStorage = localStorage.getItem('favorites');
-    if (favoritesFromStorage) {
-      const favorites = JSON.parse(favoritesFromStorage);
-      setFilteredCatalog(favorites);
-    }
+    setFilteredCatalog(favoriteCatalog);
   }, [favoriteCatalog]);
 
   useEffect(() => {

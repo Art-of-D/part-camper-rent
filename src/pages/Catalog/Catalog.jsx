@@ -12,7 +12,7 @@ import {
   getStartFiltering,
   getAllFilters,
 } from '../../redux-store/filter/selectors';
-import { filteredList } from '../../utils/filteredList';
+import { filteredList } from '../../utils/filterUtils';
 import {
   startFiltering,
   setLocation,

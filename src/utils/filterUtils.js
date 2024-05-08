@@ -27,3 +27,10 @@ export const filteredList = (arr, filters) => {
   });
   return data;
 };
+
+export const isChecked = (name, arr) => {
+  if (arr) {
+    return arr.some(item => item === name);
+  }
+  return false;
+};

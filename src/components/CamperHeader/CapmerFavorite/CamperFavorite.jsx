@@ -15,10 +15,8 @@ export const CamperFavorite = ({ camper }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const favoritesFromStorage = localStorage.getItem('favorites');
-    if (favoritesFromStorage) {
-      const favorites = JSON.parse(favoritesFromStorage);
-      const isCamperFavorite = favorites.some(
+    if (favoriteCatalog) {
+      const isCamperFavorite = favoriteCatalog.some(
         favorite => favorite._id === camper._id
       );
       setIsFavorite(isCamperFavorite);
@@ -29,17 +27,9 @@ export const CamperFavorite = ({ camper }) => {
     if (!isFavorite) {
       dispatch(addToFavorites(camper));
       setIsFavorite(true);
-
-      const updatedFavorites = [...favoriteCatalog, camper];
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     } else {
       dispatch(removeFromFavorites(camper._id));
       setIsFavorite(false);
-
-      const updatedFavorites = favoriteCatalog.filter(
-        favorite => favorite._id !== camper._id
-      );
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
     }
   };
 
